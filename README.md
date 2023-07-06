@@ -4,27 +4,6 @@
 
 fork自 https://github.com/miserydx/FakeBiliBili ，在原本基础上继续维护
 
-> 项目地址：[https://github.com/cctyl/FakeBiliBili](https://github.com/cctyl/FakeBiliBili)
-
-
-### Version 1.1.0
-
-* 架构搭建
-* 分析 Api
-* 完成主页界面
-
-### Version 1.2.0
-* 完成直播播放页面
- + 集成IjkPlayer并简易封装
- + 集成DanmakuFlameMaster和来自[czp3009](https://github.com/czp3009)的[bilibili-api](https://github.com/czp3009/bilibili-api)完成弹幕功能
-* 一些开源库的更新
-
-### 前期准备
-
-* 反编译资源文件
-* [mitmproxy](https://mitmproxy.org/)抓取 Api(支持https)
-* 获得 B 站 signKey 签名逻辑
-* 框架搭建
 
 ### 用到的开源库
 * [RxJava2](https://github.com/ReactiveX/RxJava) 最coooooool的响应式编程框架
