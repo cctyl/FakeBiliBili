@@ -2,15 +2,10 @@
 
 一款基于 **MVP+RxJava2+Retrofit+Dagger2+Butterknife+Fresco+MultitypeAdapter+MD** 的仿 B 站设计风格客户端
 
-> 项目地址：[https://github.com/TeamNB/FakeBiliBili](https://github.com/TeamNB/FakeBiliBili)
+fork自 https://github.com/miserydx/FakeBiliBili ，在原本基础上继续维护
 
-[Demo下载](https://github.com/TeamNB/FakeBiliBili/raw/master/FakeBiliBili_demo.apk)
+> 项目地址：[https://github.com/cctyl/FakeBiliBili](https://github.com/cctyl/FakeBiliBili)
 
-目前完成**主页UI**以及**直播页**的部分UI（播放器和弹幕）
-
-这个项目完全出自个人爱好，平常也是个b站重度用户。以后会不定期更新~大家多提意见多交流
-
-觉得还不错就给个star吧 (￣▽￣)~*
 
 ### Version 1.1.0
 
@@ -46,35 +41,3 @@
 * [DanmakuFlameMaster](https://github.com/Bilibili/DanmakuFlameMaster) 烈焰弹幕使-b站开源弹幕解析绘制引擎项目
 
 更多内容请看这里 [FakeBiliBili 系列 (启动篇)](http://www.jianshu.com/p/b3b9e13bd842)
-
-### 成果展示
-
-<table>
-	<tr>
-		<th>直播</th>
-		<th>推荐</th>
-		<th>追番</th>
-		<th>分区</th>
-		<th>侧滑</th>
-	</tr>
-	<tr>
-		  <td>
-			  <img src="http://image-repository.oss-cn-beijing.aliyuncs.com/main_page_live.png"/>
-		  </td>
-		  <td>
-			  <img src="http://image-repository.oss-cn-beijing.aliyuncs.com/main_page_recommend.png"/>
-		  </td>
-		  <td>
-			  <img src="http://image-repository.oss-cn-beijing.aliyuncs.com/main_page_bangumi.png"/>
-      </td>
-		  <td>
-			  <img src="http://image-repository.oss-cn-beijing.aliyuncs.com/main_page_region.png"/>
-		  </td>
-		  <td>
-			  <img src="http://image-repository.oss-cn-beijing.aliyuncs.com/main_page_drawer.png"/>
-		  </td>
-	</tr>
-</table>
-
-![直播页](http://image-repository.oss-cn-beijing.aliyuncs.com/live_page.gif)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![数据列表](http://image-repository.oss-cn-beijing.aliyuncs.com/LoadMore.gif)
