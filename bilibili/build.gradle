@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.bilibili"
@@ -24,22 +23,29 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    annotationProcessor("javax.annotation:javax.annotation-api:1.3.2")
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2') {
         exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile 'junit:junit:4.12'
-    compile project(':common')
-    compile project(':ijkplayer')
-    compile "com.google.dagger:dagger:$dagger_version"
-    compile("com.jakewharton:butterknife:$butterknife_version") {
+    }
+
+    testImplementation 'junit:junit:4.12'
+
+    implementation project(':common')
+    implementation project(':ijkplayer')
+
+    implementation "com.google.dagger:dagger:$dagger_version"
+
+
+    implementation("com.jakewharton:butterknife:$butterknife_version") {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.android.support', module: 'support-compat'
     }
-    compile 'com.alibaba:fastjson:1.2.14'
-    compile 'org.jsoup:jsoup:1.10.2'
-    //弹幕烈焰使
-    compile 'com.github.ctiao:DanmakuFlameMaster:0.9.12'
+
+    implementation 'com.alibaba:fastjson:1.2.14'
+    implementation 'org.jsoup:jsoup:1.10.2'
+    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.12'
 
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
