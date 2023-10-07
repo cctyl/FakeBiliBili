@@ -43,6 +43,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        // 注册一个回调监听，lifecycle 发生变化会触发里面的函数
         registerActivityLifecycleCallbacks(new ActivityLifecycleManager());
         Fragmentation.builder()
                 // 设置 栈视图 模式为 悬浮球模式   SHAKE: 摇一摇唤出   NONE：隐藏
@@ -68,12 +69,18 @@ public class App extends Application {
         Utils.init(this);
     }
 
+    /**
+     * 这段代码的意义是在使用Fresco图片加载库时进行内存管理和优化
+     * 通过反馈系统内存调整信息，动态地管理Fresco的内存使用，并进行相关的优化，以提升应用程序的性能和资源利用效率。
+     */
     public void initFresco() {
-        //当内存紧张时采取的措施
+        //当内存紧张时采取的措施 创建一个MemoryTrimmableRegistry对象，并将其设置为不执行任何操作的实例。
         MemoryTrimmableRegistry memoryTrimmableRegistry = NoOpMemoryTrimmableRegistry.getInstance();
+        //注册一个MemoryTrimmable接口的匿名实现类，在内存发生调整时触发回调方法。
         memoryTrimmableRegistry.registerMemoryTrimmable(new MemoryTrimmable() {
             @Override
             public void trim(MemoryTrimType trimType) {
+                // 在回调方法中，根据内存调整类型的建议比例，判断是否需要清除内存缓存。如果应用程序靠近Dalvik堆限制、在后台时系统内存较低、在前台时系统内存较低，则清除Fresco的内存缓存。
                 final double suggestedTrimRatio = trimType.getSuggestedTrimRatio();
                 Log.d("Fresco", String.format("onCreate suggestedTrimRatio : %d", suggestedTrimRatio));
                 if (MemoryTrimType.OnCloseToDalvikHeapLimit.getSuggestedTrimRatio() == suggestedTrimRatio
@@ -85,11 +92,14 @@ public class App extends Application {
                 }
             }
         });
+        // 创建ImagePipelineConfig对象，并设置一些配置参数，包括启用图像降低采样、对网络请求的图片进行大小调整和旋转等。
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
                 .setDownsampleEnabled(true)
+                //为网络设置调整大小和旋转启用
                 .setResizeAndRotateEnabledForNetwork(true)
 //                .setBitmapMemoryCacheParamsSupplier(new DefaultBitmapMemoryCacheParamsSupplier((ActivityManager) getSystemService(ACTIVITY_SERVICE)))
 //                .setBitmapMemoryCacheParamsSupplier(new DefaultEncodedMemoryCacheParamsSupplier())
+                //设置位图内存缓存参数供应商
                 .setBitmapMemoryCacheParamsSupplier(new CustomBitmapMemoryCacheParamsSupplier((ActivityManager) getSystemService(ACTIVITY_SERVICE)))
                 .setMemoryTrimmableRegistry(memoryTrimmableRegistry)
                 .setBitmapsConfig(Bitmap.Config.RGB_565)

@@ -4,6 +4,10 @@
 
 fork自 https://github.com/miserydx/FakeBiliBili ，在原本基础上继续维护
 
+### 开发环境
+* As 2022.2.1 Patch2
+* gradle-7.2
+
 
 ### 用到的开源库
 * [RxJava2](https://github.com/ReactiveX/RxJava) 最coooooool的响应式编程框架
